@@ -12,9 +12,30 @@
     </head>
     <body style = "background-color: #ebebeb;">
         
-        <header>
+        <!-- <header>
             <h1 style="color:aliceblue;">Wake up !!!</h1>
-        </header>
+        </header> -->
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Wake Up !!!</a>
+            <ul class='navbar-nav'>
+                {% if user.is_authenticated %}
+                    <li class='nav-time'>
+                        <span class='navbar-text'>{{ user }} - </span>
+                    </li>
+                    <li class='nav-item'>
+                        <a href='{% url "logout" %}' class='logout nav-link'>Logout</a>
+                    </li>
+                {% else %}
+                    <li class='nav-item'>
+                        <a href='{% url "login" %}' class='login nav-link'>Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='{% url "accounts:signup" %}' class='signup nav-link'> Sign up </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
         
         {% block main %}
         <p>※コンテンツがありません。</p>
