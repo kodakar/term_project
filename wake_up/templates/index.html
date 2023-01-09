@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 {% block main %}
 
-    <!----- main ----->
     <div style="text-align: center;">
-        <button id="start_btn" name = "start_button">Start</button>
-        <button id="stop_btn">Stop</button>
+        <button class="button_justify" id="start_btn" name = "start_button">Start</button>
+        <button class="button_justify" id="stop_btn">Stop</button>
     </div>
     <div style="text-align: center;">
         <video id="video_area" style="background-color: #000" autoplay></video> 
     </div>
-    <!----- /main ----->
 
- <script>
+<script>
 
     if (typeof navigator.mediaDevices.getUserMedia !== 'function') {
         const err = new Error('getUserMedia()が使えないブラウザだよ');

@@ -1,26 +1,49 @@
 {% extends '../layout.html' %}
 
 {% block content %}
-<h1>Login</h1>
-<section class='common-form'>
-    {% if form.errors %}
-        <p class='error-msg'>Your username and password didn't match. Please try again.</p>
-    {% endif %}
+<div class="col-sm-6 h1_justify mx-auto">
+    <div class="card">
+        <h4 class="card-header text-white bg-secondary">Login</h4>
+        <div class="card-body bg-light">
+            <section class='common-form'>
+                {% if form.errors %}
+                    <p class='error-msg'>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+        
+                {% if next %}
+                    {% if user.is_authenticated %}
+                        <p class='error-msg'>Your account doesn't have access to this page. To proceed,
+                        please login with an account that has access.</p>
+                    {% else %}
+                        <p class='error-msg'>Please login to see this page.</p>
+                    {% endif %}
+                {% endif %}
+        
+                <form action='{% url "login" %}' method='post'>
+                    {% csrf_token %}
+                    <input type='hidden' name='next' value='{{ next }}'/>
+                    {{ form.as_p }}
+                    <button type='submit' class="button_justify1">Login</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
 
-    {% if next %}
-        {% if user.is_authenticated %}
-            <p class='error-msg'>Your account doesn't have access to this page. To proceed,
-            please login with an account that has access.</p>
-        {% else %}
-            <p class='error-msg'>Please login to see this page.</p>
-        {% endif %}
-    {% endif %}
 
-    <form action='{% url "login" %}' method='post'>
-        {% csrf_token %}
-        <input type='hidden' name='next' value='{{ next }}'/>
-        {{ form.as_p }}
-        <button type='submit'>Login</button>
-    </form>
-</section>
+<style>
+    .h1_justify{
+        text-align: center;
+    }
+    .button_justify1{
+        background-color:rgb(66, 112, 248);
+        margin-top:10px;
+        margin-bottom:10px;
+        font-size: 20px;
+        width: 8rem;
+        height: 3rem;
+        border-radius: 0.5em;
+    }
+</style>
+
 {% endblock %}
