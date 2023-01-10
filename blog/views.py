@@ -23,4 +23,4 @@ class Delete(DeleteView):
     model = Post
     
     # 削除したあとに移動する先（トップページ）
-    success_url = "/"
+    success_url = "/blog"

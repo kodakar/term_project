@@ -16,7 +16,8 @@
             <ul class='navbar-nav'>
                 {% if user.is_authenticated %}
                     <li class='nav-time'>
-                        <span class='navbar-text'>{{ user }} - </span>
+                        <a href='{% url "accounts:profile" user.id %}' class='navbar-text'>{{ user }}</a>
+                        <span class='navbar-text'> - </span>
                     </li>
                     <li class='nav-item'>
                         <a href='{% url "logout" %}' class='logout nav-link'>Logout</a>
