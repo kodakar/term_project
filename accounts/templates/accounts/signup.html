@@ -1,12 +1,37 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h1>Sign up</h1>
-<section class='common-form'>
-    <form method='post'>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type='submit'>Sign up</button>
-    </form>
-</section>
+<div class="col-sm-8 mx-auto">
+    <div class="card">
+        <h4 class="card-header text-white bg-secondary" style="text-align: center;">Sign up</h4>
+        <div class="card-body bg-light">
+            <section class='common-form'>
+                <form method='post'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div style="text-align: center;">
+                        <button type='submit' class="button_justify1">Sign up</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .h1_justify{
+        text-align: center;
+    }
+    .button_justify1{
+        background-color:rgb(66, 112, 248);
+        margin-top:10px;
+        margin-bottom:10px;
+        font-size: 20px;
+        width: 8rem;
+        height: 3rem;
+        border-radius: 0.5em;
+    }
+</style>
+
 {% endblock %}
