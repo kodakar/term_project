@@ -32,7 +32,7 @@ def video_feed_view():
 
 Xml_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/haarcascade_frontalface_alt2.xml"
 Dat_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/shape_predictor_68_face_landmarks.dat"
-# Sound_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/soundb.wav"
+Sound_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/soundb.wav"
 
 
 def generate_frame():
