@@ -27,8 +27,11 @@ def video_feed_view():
     return lambda _: StreamingHttpResponse(generate_frame(), content_type='multipart/x-mixed-replace; boundary=frame')
 
 # フレーム生成・返却する処理
-Xml_path = "C:/tutorial/Mypython/termproject/haarcascade_frontalface_alt2.xml"
-Dat_path = "C:/tutorial/Mypython/termproject/shape_predictor_68_face_landmarks.dat"
+# Xml_path = "C:/tutorial/Mypython/termproject/haarcascade_frontalface_alt2.xml"
+# Dat_path = "C:/tutorial/Mypython/termproject/shape_predictor_68_face_landmarks.dat"
+
+Xml_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/haarcascade_frontalface_alt2.xml"
+Dat_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/shape_predictor_68_face_landmarks.dat"
 # Sound_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/soundb.wav"
 
 face_1 = cv2.CascadeClassifier(Xml_path)
@@ -65,21 +68,20 @@ def generate_frame():
             
             left = face_parts[42:48]
             left_ear = calc_ear(left)
-            cv2.putText(frame, "LEFT eye EAR:{} ".format(left_ear), (10, 100), cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 1, cv2.LINE_AA)
             
             right = face_parts[36:42]
             right_ear = calc_ear(right)
-            cv2.putText(frame, "RIGHT eye EAR:{} ".format(round(right_ear, 3)), (10, 120), cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 1, cv2.LINE_AA)
             
-            if (left_ear + right_ear) < 0.45:
+            if (left_ear + right_ear) < 0.55:
                 if t1 == 0.0:
                     t1 = time.time()
                 else:
                     close_eye += time.time()-t1
                     t1 = time.time()
-                if close_eye > 5.0:
-                    cv2.putText(frame,"Sleepy eyes. Wake up!", (10,180), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,255), 3, 1) 
-                    # playsound(Sound_path)       
+                cv2.putText(frame,str(round(close_eye)), (10,40), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,255), 3, 1)  
+                if close_eye > 3.0:
+                    cv2.putText(frame,"Sleepy eyes. Wake up!", (10,80), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,255), 3, 1)
+                    # playsound(Sound_path) 
             else:
                 close_eye = 0.0
                 t1 = 0.0
