@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% load l10n %}
+{% block content %}
+
+<div class="col-sm-6 h1_justify mx-auto">
+    <div class="card">
+        <h4 class="card-header text-white bg-secondary">{{ object.title }}</h4>
+        <div class="card-body bg-light">
+            <div class="btn_justify">
+                <p>{{ object.user }}</p>
+                <p style="opacity: 0.5;"><time>{{ object.updated|localize }}</time></p>
+            </div>
+            <div class="radius-sample1">
+                <h5 style="text-align: left;">内容 :</h5>
+                <u>{{ object.body }}</u>
+            </div>
+            <div class="btn_justify">
+                <a href="{% url 'accounts:profile' post.user %}" class="btn btn-primary">戻る</a>
+                {% if user == object.user %}
+                <a href="{% url 'delete' post.id %}" class="btn btn-danger">削除</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .radius-sample1{
+        background-color: rgb(211, 211, 211);
+        border-radius:10px 10px 10px 10px;
+        width:cover;
+        height:cover;
+        padding: 15px;
+        border:#333333 solid 2px; 
+        margin-bottom:50px;
+    }
+    .h1_justify{
+        text-align: center;
+    }
+    .btn_justify{
+        text-align: right;
+    }
+    .button_justify1{
+        background-color:rgb(66, 112, 248);
+        margin-top:10px;
+        margin-bottom:10px;
+        font-size: 20px;
+        width: 8rem;
+        height: 3rem;
+        border-radius: 0.5em;
+    }
+</style>
+
+{% endblock %}

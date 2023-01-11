@@ -1,5 +1,51 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>{{ user.username }}</h2>
+<h1>{{ user.username }}'s Post</h1>
+<div>
+    <ol>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for post in object_list %}
+                {% if user == post.user %}
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header text-white bg-secondary">{{ post.title }} :</h5>
+                        <div class="card-body bg-light">
+                            <p class="card-text">{{post.body|truncatechars:50}}</p>
+                            <div class="btn_justify">
+                                <a href="{% url 'accounts:myDetail' post.id %}" class="btn btn-primary btn_justify">投稿を見る　≫</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+        </div>
+
+    </ol>
+</div>
+
+<style>
+    .h1_justify{
+        text-align: center;
+    }
+    .btn_justify{
+        text-align: right;
+    }
+    .card_justify{
+        margin-bottom:50px;
+    }
+    .button_justify1{
+        background-color:rgb(66, 112, 248);
+        margin-top:10px;
+        margin-bottom:10px;
+        font-size: 20px;
+        width: 8rem;
+        height: 3rem;
+        border-radius: 0.5em;
+    }
+</style>
 {% endblock %}
