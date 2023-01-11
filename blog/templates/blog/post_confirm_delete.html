@@ -2,9 +2,23 @@
 
 {% block content %}
 <h2>削除確認</h2>
-<p>{{ object.title }}を本当に削除してもよろしいですか？</p>
-<form method="post">
-    {% csrf_token %}
-    <input type="submit" value="削除" class="btn btn-danger" />
-</form>
+<div class="radius-sample1">
+    <p>この投稿（{{ object.title }}）を本当に削除してもよろしいですか？</p>
+    <form method="post">
+        {% csrf_token %}
+        <a href="{% url 'blog' %}" class="btn btn-primary">戻る</a>
+        <input type="submit" value="削除" class="btn btn-danger" />
+    </form>
+</div>
+
+<style>
+    .radius-sample1{
+        background-color: rgb(248, 246, 246);
+        border-radius:10px 10px 10px 10px;
+        width:400px;
+        height:cover;
+        padding: 15px;
+        border:#333333 solid 2px;
+    }
+</style>
 {% endblock %}
