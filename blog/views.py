@@ -19,6 +19,10 @@ class Create(CreateView):
     # 編集対象にするフィールド
     fields = ["title", "body"]
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class Delete(DeleteView):
     model = Post
     
