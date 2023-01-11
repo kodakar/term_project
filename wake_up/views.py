@@ -34,12 +34,13 @@ Xml_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/haarcascade
 Dat_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/shape_predictor_68_face_landmarks.dat"
 # Sound_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/soundb.wav"
 
-face_1 = cv2.CascadeClassifier(Xml_path)
-face_parts_1 = dlib.shape_predictor(Dat_path)
-t1 = 0.0
-close_eye = 0.0
 
 def generate_frame():
+    face_1 = cv2.CascadeClassifier(Xml_path)
+    face_parts_1 = dlib.shape_predictor(Dat_path)
+    t1 = 0.0
+    close_eye = 0.0
+    
     capture = cv2.VideoCapture(0)  # USBカメラから
     
     while True:

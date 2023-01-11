@@ -1,8 +1,8 @@
-{% extends "base.html" %}
-{% block main %}
+{% extends "layout.html" %}
+{% block content %}
 
     <div style="text-align: center;">
-        <button class="button_justify" id="start_btn" name = "start_button">Start</button>
+        <button class="button_justify" id="start_btn" onclick="location.href='/video'">Start</button>
         <button class="button_justify" id="stop_btn">Stop</button>
     </div>
     <div style="text-align: center;">
@@ -11,30 +11,30 @@
 
 <script>
 
-    if (typeof navigator.mediaDevices.getUserMedia !== 'function') {
-        const err = new Error('getUserMedia()が使えないブラウザだよ');
-        alert(`${err.name} ${err.message}`);
-        throw err;
-    }
+    // if (typeof navigator.mediaDevices.getUserMedia !== 'function') {
+    //     const err = new Error('getUserMedia()が使えないブラウザだよ');
+    //     alert(`${err.name} ${err.message}`);
+    //     throw err;
+    // }
 
-    const $start = document.getElementById('start_btn');   // スタートボタン
-    const $video = document.getElementById('video_area');  // 映像表示エリア
-    const $stop = document.getElementById('stop_btn');   // ストップボタン
+    // const $start = document.getElementById('start_btn');   // スタートボタン
+    // const $video = document.getElementById('video_area');  // 映像表示エリア
+    // const $stop = document.getElementById('stop_btn');   // ストップボタン
 
-    $start.addEventListener('click', () => {
-        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-        .then(stream => $video.srcObject = stream)
-        .catch(err => alert(`${err.name} ${err.message}`));
-    }, false);
+    // $start.addEventListener('click', () => {
+    //     navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+    //     .then(stream => $video.srcObject = stream)
+    //     .catch(err => alert(`${err.name} ${err.message}`));
+    // }, false);
 
-    $stop.addEventListener('click', () => {
-        const tracks = document.getElementById('video_area').srcObject.getTracks();
-        tracks.forEach(track => {
-        track.stop();
-        });
+    // $stop.addEventListener('click', () => {
+    //     const tracks = document.getElementById('video_area').srcObject.getTracks();
+    //     tracks.forEach(track => {
+    //     track.stop();
+    //     });
 
-        document.getElementById('video_area').srcObject = null;
-    }, false);
+    //     document.getElementById('video_area').srcObject = null;
+    // }, false);
 
 </script>
 {% endblock %}
