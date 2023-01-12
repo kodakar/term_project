@@ -30,9 +30,15 @@ def video_feed_view():
 Xml_path = "C:/tutorial/Mypython/termproject/haarcascade_frontalface_alt2.xml"
 Dat_path = "C:/tutorial/Mypython/termproject/shape_predictor_68_face_landmarks.dat"
 
+<<<<<<< HEAD
 """ Xml_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/haarcascade_frontalface_alt2.xml"
 Dat_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/shape_predictor_68_face_landmarks.dat" """
 Sound_path = "C:/tutorial/Mypython/term_project_3/term_project/wake_up/material/soundb.wav"
+=======
+Xml_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/haarcascade_frontalface_alt2.xml"
+Dat_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/shape_predictor_68_face_landmarks.dat"
+Sound_path = "/Volumes/USB DISK/iwai_lab/term_project/wake_up/material/soundb.wav"
+>>>>>>> 0f91716d2a917c872bc257f77603a47bdac0faeb
 
 
 def generate_frame():

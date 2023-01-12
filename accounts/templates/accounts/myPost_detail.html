@@ -15,7 +15,7 @@
                 <u>{{ object.body }}</u>
             </div>
             <div class="btn_justify">
-                <a href="{% url 'blog' %}" class="btn btn-primary">戻る</a>
+                <a href="{% url 'accounts:profile' post.user %}" class="btn btn-primary">戻る</a>
                 {% if user == object.user %}
                 <a href="{% url 'delete' post.id %}" class="btn btn-danger">削除</a>
                 {% endif %}
